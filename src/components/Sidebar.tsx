@@ -9,8 +9,8 @@ const Sidebar = () => {
         <h2>Panier</h2>
         {items.length === 0 && <p>Empty</p>}
         <ul>
-            {items.map((item) => (
-                <li key={item.id}>
+            {items.map((item, index) => (
+                <li key={item.id || index}>
                     {item.title} - ${item.price}{" "}
                     <button onClick={() => removeFromCart(item.id)}>Remove</button>
                 </li>
