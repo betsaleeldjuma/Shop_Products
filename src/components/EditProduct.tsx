@@ -2,6 +2,7 @@ import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query"
 import { useNavigate, useParams } from "react-router-dom"
 import apiShop from "../api/apiShop"
 import { useState } from "react"
+import { useDeleteProduct } from "../hook/useDeleteProduct"
 
 interface ProductUpdate {
   title: string
@@ -45,6 +46,19 @@ const EditProduct = () => {
         mutation.mutate({title, price})
     }
 
+    const deleteMutation = useDeleteProduct(productId)
+
+    const handleDelete = () => {
+        if(window.confirm('Voulez-vous vraiment supprimer ce produit ?')) {
+            deleteMutation.mutate(undefined, {
+                onSuccess: () => {
+                    alert("Product deleted")
+                    navigate("/products/app")
+                }
+            })
+        }
+    }
+
     if(isLoading) return <p>Loading...</p>
 
   return (
@@ -52,6 +66,7 @@ const EditProduct = () => {
         <input type="text" defaultValue={product?.title} onChange={(e) => setTitle(e.target.value)} placeholder="Change The Title"/>
         <input type="number" defaultValue={product?.price} onChange={(e) => setPrice(Number(e.target.value))} placeholder="Change The Price"/>
         <button type="submit">Save</button>
+        <button type="button" onClick={handleDelete}>Delete</button>
     </form>
   )
 }
