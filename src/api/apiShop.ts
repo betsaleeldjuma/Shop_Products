@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const apiShop = axios.create({
-    baseURL: "ttps://dummyjson.com",
+    baseURL: "https://dummyjson.com",
     headers: {"Content-Type": "application/json"}
 })
 
