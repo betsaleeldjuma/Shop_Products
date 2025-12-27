@@ -1,8 +1,9 @@
 import { useQuery, type QueryFunctionContext } from "@tanstack/react-query"
-// import { useParams } from "react-router-dom"
 import apiShop from "../api/apiShop"
 import { Link } from "react-router-dom"
 import { useState } from "react"
+import { useCartStore } from "../store/cartStore"
+import Sidebar from "./Sidebar"
 
 interface Product {
     id: number,
@@ -34,6 +35,7 @@ const AppShop = () => {
     const [page, setPage] = useState(0)
     const skip = page * LIMIT
     const {data , error, isLoading, isFetching} = useQuery({queryKey: ['products', {limit: LIMIT, skip}], queryFn: fetchUser, placeholderData: (previousData) => previousData})
+    const addToCart = useCartStore((state) => state.addToCart)
 
     if(isLoading) return <div><h1>Loading...</h1></div>
     if(error) return <div><p>An Error Occured</p></div>
@@ -49,6 +51,7 @@ const AppShop = () => {
                         <p>{product.category}</p>
                         <p>Rating: {product.rating}</p>
                         <p>Price: ${product.price}</p>
+                        <button onClick={() => addToCart(product)}>Add</button>
                         <Link to={`/products/${product.id}`}>View Description</Link>
                     </li>
                 ))}
@@ -59,6 +62,7 @@ const AppShop = () => {
             <button onClick={() => setPage((p) => Math.max(p - 1, 0))} disabled={page === 0}>Page précédente</button>
             <button onClick={() => setPage((p) => p + 1)} disabled={!data?.products?.length}>Page suivante</button>
         </div>
+        <Sidebar />
     </div>
   )
 }
