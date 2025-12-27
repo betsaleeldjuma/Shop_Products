@@ -10,7 +10,7 @@ const Sidebar = () => {
         {items.length === 0 && <p>Empty</p>}
         <ul>
             {items.map((item) => (
-                <li>
+                <li key={item.id}>
                     {item.title} - ${item.price}{" "}
                     <button onClick={() => removeFromCart(item.id)}>Remove</button>
                 </li>
