@@ -1,7 +1,7 @@
 import apiShop from "../api/apiShop"
 import { useMutation } from "@tanstack/react-query"
 
-interface LoginPayLoad {
+interface LoginPayload {
     username: string
     password: string
 }
@@ -14,11 +14,11 @@ interface LoginResponse {
 }
 
 export const useLogin = () => {
-    return useMutation<LoginResponse, Error, LoginPayLoad>({
-        mutationFn: ({username, password}) => apiShop.post<LoginResponse>("/auth/login", {username, password}).then(res => res.data),
+    return useMutation<LoginResponse, Error, LoginPayload>({
+        mutationFn: ({username, password}) => apiShop.post<LoginResponse>("https://dummyjson.com/auth/login", {username, password}).then(res => res.data),
         onSuccess: (data) => {
             localStorage.setItem('token', data.token)
-            console.log('Login successful, token savec')
+            console.log('Login successful, token saved')
         }
     })
 }

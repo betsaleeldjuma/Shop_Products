@@ -3,8 +3,8 @@ import { useNavigate } from "react-router-dom"
 import { useLogin } from "../hook/useLogin"
 
 const Login = () => {
-    const [username, setUsername] = useState('')
-    const [password, setPassword] = useState<string>("")
+    const [username, setUsername] = useState("")
+    const [password, setPassword] = useState("")
     const navigate = useNavigate()
 
     const loginMutation = useLogin()
@@ -13,10 +13,10 @@ const Login = () => {
         e.preventDefault()
         loginMutation.mutate(
         {username, password},
-        {onSuccess: () => navigate('/products/app')}
+        {onSuccess: () => navigate('/app')}
         )
     }
-
+    
   return (
     <form onSubmit={handleSubmit}>
         <label>Name:</label>
