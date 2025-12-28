@@ -6,17 +6,17 @@ const Sidebar = () => {
 
   return (
     <aside>
-        <h2>Panier</h2>
+        <h2 className="text-3xl font-bold">Basket</h2>
         {items.length === 0 && <p>Empty</p>}
         <ul>
             {items.map((item, index) => (
                 <li key={item.id || index}>
-                    {item.title} - ${item.price}{" "}
+                    <h1><span className="font-bold">{item.title}</span> - ${item.price}{" "}</h1>
                     <button onClick={() => removeFromCart(item.id)}>Remove</button>
                 </li>
             ))}
         </ul>
-        <h3>Total: ${total}</h3>
+        <h3 className="text-xl font-bold">Total: ${total}</h3>
     </aside>
   )
 }

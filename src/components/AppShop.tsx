@@ -44,37 +44,46 @@ const AppShop = () => {
     if(!data) return <div><h1>No Products Found</h1></div>
 
   return (
-    <div className="flex ">
-        <div>
+    <div className="flex p-5">
+        <div className="w-[30%] p-5">
             {isOpen ? <div>
                 <Sidebar />
                 <button onClick={() => setIsOpen(!isOpen)}>Close</button>
-            </div> : <button onClick={() => setIsOpen(!isOpen)}>Store</button>}
+            </div> : <div className="flex flex-col justify-center gap-2">
+                    <h1 className="text-3xl font-bold">Basket</h1>
+                    <button onClick={() => setIsOpen(!isOpen)}>Open</button>
+                </div>}
         </div>
-        <div>
+        <div className="w-[70%] p-5">
             <div>
                 <h1>Shop</h1>
                 {/* <Search /> */}
             </div>
-            <div>
+            <div className="flex flex-col gap-4">
                 <div>
-                    <ul>
+                    <ul className="flex flex-col gap-8">
                         {data.products.map((product) => (
-                            <li key={product.id}>
-                                <h1>{product.title}</h1>
-                                <p>{product.category}</p>
-                                <p>Rating: {product.rating}</p>
-                                <p>Price: ${product.price}</p>
-                                <button onClick={() => addToCart(product)}>Add</button>
-                                <Link to={`/products/${product.id}`}>View Description</Link>
+                            <li key={product.id} className="flex flex-col gap-2 shadow-lg p-3">
+                                <div className="flex justify-evenly">
+                                    <h1>{product.title}</h1>
+                                    <p>{product.category}</p>
+                                    <p>Rating: {product.rating}</p>
+                                    <p>Price: ${product.price}</p>
+                                </div>
+                                <div className="flex justify-center gap-4">
+                                    <button onClick={() => addToCart(product)}>Add</button>
+                                    <Link to={`/products/${product.id}`} className="underline text-blue-700 hover:text-black">View Description</Link>
+                                </div>
                             </li>
                         ))}
                     </ul>
                 </div>
                 <div>
                     {isFetching && <p>Chargement...</p>}
-                    <button onClick={() => setPage((p) => Math.max(p - 1, 0))} disabled={page === 0}>Page précédente</button>
-                    <button onClick={() => setPage((p) => p + 1)} disabled={!data?.products?.length}>Page suivante</button>
+                    <div className="flex gap-4">
+                        <button onClick={() => setPage((p) => Math.max(p - 1, 0))} disabled={page === 0}>Prev</button>
+                        <button onClick={() => setPage((p) => p + 1)} disabled={!data?.products?.length}>Next</button>
+                    </div>
                 </div>
             </div>
         </div>
