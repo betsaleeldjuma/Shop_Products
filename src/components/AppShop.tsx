@@ -47,7 +47,7 @@ const AppShop = () => {
   return (
     <div className="flex p-5">
         <div className="w-[30%] p-5">
-            {isOpen ? <div>
+            {isOpen ? <div className="shadow-lg p-5">
                 <Sidebar />
                 <button onClick={() => setIsOpen(!isOpen)} className="w-[80%] bg-red-500 rounded-lg">Close</button>
             </div> : <div className="flex flex-col justify-center gap-2">
@@ -71,8 +71,8 @@ const AppShop = () => {
                                     <p>Rating: {product.rating}</p>
                                     <p>Price: ${product.price}</p>
                                 </div>
-                                <div className="flex justify-center gap-4">
-                                    <button onClick={() => addToCart(product)}>Add</button>
+                                <div className="flex justify-center items-center gap-4">
+                                    <button onClick={() => addToCart(product)} className="bg-yellow-500 p-2 rounded-lg shadow-sm">Add</button>
                                     <Link to={`/products/${product.id}`} className="underline text-blue-700 hover:text-black">View Description</Link>
                                 </div>
                             </li>
