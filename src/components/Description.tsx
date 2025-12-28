@@ -30,17 +30,22 @@ const Description = () => {
     if(!data) return <div><h1>No Products Found</h1></div>
 
   return (
-    <div>
-        <h1>{data.title}</h1>
-        <p>Price: ${data.price}</p>
-        <p>Category: {data.category}</p>
-        <h2>Description</h2>
+    <div className="flex flex-col justify-center items-center gap-4 w-[100%] h-screen">
+      <div className="flex flex-col w-[40%] justify-center items-center">
+        <h1 className="font-extrabold text-3xl">{data.title}</h1>
+        <p className="text-xl font-bold">Price: ${data.price}</p>
+        <p className="text-xl font-bold">Category: {data.category}</p>
+        <h2 className="text-2xl font-bold">Description</h2>
         <p>{data.description}</p>
-        {isEdit ? <div>
+      </div>
+      <div className="w-[35%]">
+        {isEdit ? <div className="flex flex-col justify-center items-center gap-4">
           <EditProduct />
-        </div> : <div>
-            <button onClick={() => setIsEdit(!isEdit)}>Edit</button>
+          <button onClick={() => setIsEdit(!isEdit)} className="bg-red-500 w-[80%] p-2 rounded-lg shadow-sm">Close</button>
+        </div> : <div className="flex justify-center items-center">
+            <button onClick={() => setIsEdit(!isEdit)} className="w-[80%] bg-yellow-500 p-2 rounded-lg shadow-sm">Edit</button>
           </div>} 
+      </div>
     </div>
   )
 }

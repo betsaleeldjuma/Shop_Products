@@ -37,7 +37,7 @@ const EditProduct = () => {
         onSuccess: () => {
             queryClient.invalidateQueries({queryKey: ["products"]})
             queryClient.invalidateQueries({queryKey: ["product", productId]})
-            navigate("/products/app")
+            navigate("/app")
         }
     })
 
@@ -62,11 +62,11 @@ const EditProduct = () => {
     if(isLoading) return <p>Loading...</p>
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={handleSubmit} className="flex flex-col justify-center items-center gap-4 w-[40%]">
         <input type="text" defaultValue={product?.title} onChange={(e) => setTitle(e.target.value)} placeholder="Change The Title"/>
         <input type="number" defaultValue={product?.price} onChange={(e) => setPrice(Number(e.target.value))} placeholder="Change The Price"/>
-        <button type="submit">Save</button>
-        <button type="button" onClick={handleDelete}>Delete</button>
+        <button type="submit" className="w-[80%] bg-green-500 p-2 rounded-lg">Save</button>
+        <button type="button" onClick={handleDelete} className="bg-red-500 w-[80%] p-2 rounded-lg">Delete</button>
     </form>
   )
 }

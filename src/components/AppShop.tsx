@@ -4,6 +4,7 @@ import { Link } from "react-router-dom"
 import { useState } from "react"
 import { useCartStore } from "../store/cartStore"
 import Sidebar from "./Sidebar"
+import { CgAdd } from "react-icons/cg"
 // import Search from "./Search"
 
 interface Product {
@@ -35,6 +36,7 @@ const AppShop = () => {
     const LIMIT = 10
     const [page, setPage] = useState(0)
     const [isOpen, setIsOpen] = useState(false)
+    const [isCreate, setIsCreate] = useState(false)
     const skip = page * LIMIT
     const {data , error, isLoading, isFetching} = useQuery({queryKey: ['products', {limit: LIMIT, skip}], queryFn: fetchUser, placeholderData: (previousData) => previousData})
     const addToCart = useCartStore((state) => state.addToCart)
@@ -48,16 +50,18 @@ const AppShop = () => {
         <div className="w-[30%] p-5">
             {isOpen ? <div>
                 <Sidebar />
-                <button onClick={() => setIsOpen(!isOpen)}>Close</button>
+                <button onClick={() => setIsOpen(!isOpen)} className="w-[80%] bg-red-500 rounded-lg">Close</button>
             </div> : <div className="flex flex-col justify-center gap-2">
                     <h1 className="text-3xl font-bold">Basket</h1>
-                    <button onClick={() => setIsOpen(!isOpen)}>Open</button>
+                    <button onClick={() => setIsOpen(!isOpen)} className="w-[80%] bg-green-500 rounded-lg">Open</button>
                 </div>}
         </div>
         <div className="w-[70%] p-5">
             <div>
-                <h1>Shop</h1>
+                <h1 className="text-3xl font-bold">Shop</h1>
                 {/* <Search /> */}
+                <
+                <CgAdd />
             </div>
             <div className="flex flex-col gap-4">
                 <div>
