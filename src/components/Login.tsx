@@ -18,12 +18,12 @@ const Login = () => {
     }
     
   return (
-    <form onSubmit={handleSubmit}>
-        <label>Name:</label>
-        <input type="text" value={username} onChange={(e) => setUsername(e.target.value)}/>
-        <label>Password:</label>
-        <input type="password" value={password} onChange={(e) => setPassword(e.target.value)}/>
-        <button type="submit">Login</button>
+    <form onSubmit={handleSubmit} className="flex flex-col justify-center items-center gap-4 w-screen h-screen">
+        <label className="text-xl font-bold">Name:</label>
+        <input type="text" value={username} onChange={(e) => setUsername(e.target.value)} className="border p-2 w-[40%] rounded-sm"/>
+        <label className="text-xl font-bold">Password:</label>
+        <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} className="border p-2 w-[40%] rounded-sm"/>
+        <button type="submit" className="bg-green-500 p-2 rounded-lg shadow-lg w-[40%]">Login</button>
     </form>
   )
 }
