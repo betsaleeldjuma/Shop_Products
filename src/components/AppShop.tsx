@@ -4,6 +4,7 @@ import { Link } from "react-router-dom"
 import { useState } from "react"
 import { useCartStore } from "../store/cartStore"
 import Sidebar from "./Sidebar"
+// import Search from "./Search"
 
 interface Product {
     id: number,
@@ -52,25 +53,32 @@ const AppShop = () => {
         </div>
         <div>
             <div>
-                <ul>
-                    {data.products.map((product) => (
-                        <li key={product.id}>
-                            <h1>{product.title}</h1>
-                            <p>{product.category}</p>
-                            <p>Rating: {product.rating}</p>
-                            <p>Price: ${product.price}</p>
-                            <button onClick={() => addToCart(product)}>Add</button>
-                            <Link to={`/products/${product.id}`}>View Description</Link>
-                        </li>
-                    ))}
-                </ul>
+                <h1>Shop</h1>
+                {/* <Search /> */}
             </div>
             <div>
-                {isFetching && <p>Chargement...</p>}
-                <button onClick={() => setPage((p) => Math.max(p - 1, 0))} disabled={page === 0}>Page précédente</button>
-                <button onClick={() => setPage((p) => p + 1)} disabled={!data?.products?.length}>Page suivante</button>
+                <div>
+                    <ul>
+                        {data.products.map((product) => (
+                            <li key={product.id}>
+                                <h1>{product.title}</h1>
+                                <p>{product.category}</p>
+                                <p>Rating: {product.rating}</p>
+                                <p>Price: ${product.price}</p>
+                                <button onClick={() => addToCart(product)}>Add</button>
+                                <Link to={`/products/${product.id}`}>View Description</Link>
+                            </li>
+                        ))}
+                    </ul>
+                </div>
+                <div>
+                    {isFetching && <p>Chargement...</p>}
+                    <button onClick={() => setPage((p) => Math.max(p - 1, 0))} disabled={page === 0}>Page précédente</button>
+                    <button onClick={() => setPage((p) => p + 1)} disabled={!data?.products?.length}>Page suivante</button>
+                </div>
             </div>
-            </div>
+        </div>
+        
     </div>
   )
 }
