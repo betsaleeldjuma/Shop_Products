@@ -60,8 +60,7 @@ const AppShop = () => {
             <div>
                 <h1 className="text-3xl font-bold">Shop</h1>
                 {/* <Search /> */}
-                <
-                <CgAdd />
+                {isCreate && <Link to={}><CgAdd /></Link>}
             </div>
             <div className="flex flex-col gap-4">
                 <div>
