@@ -36,7 +36,6 @@ const AppShop = () => {
     const LIMIT = 10
     const [page, setPage] = useState(0)
     const [isOpen, setIsOpen] = useState(false)
-    const [isCreate, setIsCreate] = useState(false)
     const skip = page * LIMIT
     const {data , error, isLoading, isFetching} = useQuery({queryKey: ['products', {limit: LIMIT, skip}], queryFn: fetchUser, placeholderData: (previousData) => previousData})
     const addToCart = useCartStore((state) => state.addToCart)
@@ -57,10 +56,9 @@ const AppShop = () => {
                 </div>}
         </div>
         <div className="w-[70%] p-5">
-            <div>
+            <div className="flex justify-between items-center p-2">
                 <h1 className="text-3xl font-bold">Shop</h1>
-                {/* <Search /> */}
-                {isCreate && <Link to={}><CgAdd /></Link>}
+                <Link to='/products/new'><CgAdd size={25}/></Link>
             </div>
             <div className="flex flex-col gap-4">
                 <div>
@@ -84,8 +82,8 @@ const AppShop = () => {
                 <div>
                     {isFetching && <p>Chargement...</p>}
                     <div className="flex gap-4">
-                        <button onClick={() => setPage((p) => Math.max(p - 1, 0))} disabled={page === 0}>Prev</button>
-                        <button onClick={() => setPage((p) => p + 1)} disabled={!data?.products?.length}>Next</button>
+                        <button onClick={() => setPage((p) => Math.max(p - 1, 0))} disabled={page === 0} className="bg-black text-white p-2 rounded-lg">Prev</button>
+                        <button onClick={() => setPage((p) => p + 1)} disabled={!data?.products?.length} className="bg-black text-white p-2 rounded-lg">Next</button>
                     </div>
                 </div>
             </div>

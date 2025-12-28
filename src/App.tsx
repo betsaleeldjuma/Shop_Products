@@ -1,8 +1,9 @@
 import { Navigate, Route, Routes } from "react-router-dom"
 import AppShop from "./components/AppShop"
 import Description from "./components/Description"
-import AddProductForm from "./components/AddProductForm"
+// import AddProductForm from "./components/AddProductForm"
 import Login from "./components/Login"
+import AddProductForm from "./components/AddProduct"
 
 const App = () => {
   return (
@@ -11,7 +12,7 @@ const App = () => {
       <Route path="/login" element={<Login />} />
       <Route path="/app" element={<AppShop />} />
       <Route path="/products/:id" element={<Description />} />
-      <Route path="/products/add" element={<AddProductForm />} />
+      <Route path="/products/new" element={<AddProductForm />} />
     </Routes>
   )
 }
