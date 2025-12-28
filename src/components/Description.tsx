@@ -1,6 +1,8 @@
 import { useQuery } from "@tanstack/react-query"
 import { useParams } from "react-router-dom"
 import apiShop from "../api/apiShop"
+import EditProduct from "./EditProduct"
+import { useState } from "react"
 
 interface Product {
     id: number
@@ -19,6 +21,7 @@ const fetchProduct = async (id: number): Promise<Product> => {
 
 const Description = () => {
     const {id} = useParams<{id:string}>()
+    const [isEdit, setIsEdit] = useState(false)
     const productId = id ? Number(id) : undefined
     const {data, isError, isLoading} = useQuery<Product>({queryKey: ['products', id], queryFn: () => fetchProduct(productId!), enabled: !!id})
 
@@ -33,6 +36,11 @@ const Description = () => {
         <p>Category: {data.category}</p>
         <h2>Description</h2>
         <p>{data.description}</p>
+        {isEdit ? <div>
+          <EditProduct />
+        </div> : <div>
+            <button onClick={() => setIsEdit(!isEdit)}>Edit</button>
+          </div>} 
     </div>
   )
 }

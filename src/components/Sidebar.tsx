@@ -12,7 +12,7 @@ const Sidebar = () => {
             {items.map((item, index) => (
                 <li key={item.id || index}>
                     <h1><span className="font-bold">{item.title}</span> - ${item.price}{" "}</h1>
-                    <button onClick={() => removeFromCart(item.id)}>Remove</button>
+                    <button onClick={() => removeFromCart(item.id)} className="text-red-600">Remove</button>
                 </li>
             ))}
         </ul>

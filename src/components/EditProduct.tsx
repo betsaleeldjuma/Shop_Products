@@ -53,7 +53,7 @@ const EditProduct = () => {
             deleteMutation.mutate(undefined, {
                 onSuccess: () => {
                     alert("Product deleted")
-                    navigate("/products/app")
+                    navigate("/app")
                 }
             })
         }
