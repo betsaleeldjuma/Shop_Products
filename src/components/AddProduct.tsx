@@ -26,18 +26,13 @@ const AddProductForm = () => {
 
   return (
     <form onSubmit={handleSubmit}>
-      <input
-        value={title}
-        onChange={e => setTitle(e.target.value)}
-        placeholder="Product title"
-      />
-      <input
-        type="number"
-        value={price}
-        onChange={e => setPrice(Number(e.target.value))}
-        placeholder="Price"
-      />
-      <button type="submit">Create product</button>
+      <div className="flex flex-col justify-center items-center gap-4 w-full h-screen shadow-lg">
+        <label className="text-xl font-bold">Product Title</label>
+        <input value={title} onChange={e => setTitle(e.target.value)} placeholder="Product title" className="border rounded-lg p-1"/>
+        <label className="text-xl font-bold">Product Price</label>
+        <input type="number" value={price} onChange={e => setPrice(Number(e.target.value))} placeholder="Price" className="border rounded-lg p-1"/>
+        <button type="submit" className="bg-green-500 w-[30%] rounded-lg shadow-sm">Create product</button>
+      </div>
     </form>
   )
 }
