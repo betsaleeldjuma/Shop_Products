@@ -1,6 +1,6 @@
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query"
 import { useNavigate, useParams } from "react-router-dom"
-import apiShop from "../api/apiShop"
+import apiShop from "../store/apiShop"
 import { useState } from "react"
 import { useDeleteProduct } from "../hook/useDeleteProduct"
 

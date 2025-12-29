@@ -2,7 +2,7 @@
 import { useState } from "react"
 import { useNavigate } from "react-router-dom"
 import { useMutation, useQueryClient } from "@tanstack/react-query"
-import apiShop from "../api/apiShop"
+import apiShop from "../store/apiShop"
 
 const AddProductForm = () => {
   const [title, setTitle] = useState("")

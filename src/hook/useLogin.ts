@@ -1,4 +1,4 @@
-import apiShop from "../api/apiShop"
+import apiShop from "../store/apiShop"
 import { useMutation } from "@tanstack/react-query"
 
 interface LoginPayload {

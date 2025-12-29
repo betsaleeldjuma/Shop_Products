@@ -1,5 +1,5 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query"
-import apiShop from "../api/apiShop"
+import apiShop from "../store/apiShop"
 
 interface ProductInput {
   title: string

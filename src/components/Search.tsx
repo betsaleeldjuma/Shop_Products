@@ -1,6 +1,6 @@
 import { useQuery } from "@tanstack/react-query"
 import { useState } from "react"
-import apiShop from "../api/apiShop"
+import apiShop from "../store/apiShop"
 
 const searchProducts = async (query: string) => {
     const res = await apiShop.get('/products/search', {

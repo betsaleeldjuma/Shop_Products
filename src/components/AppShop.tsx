@@ -1,5 +1,5 @@
 import { useQuery, type QueryFunctionContext } from "@tanstack/react-query"
-import apiShop from "../api/apiShop"
+import apiShop from "../store/apiShop"
 import { Link } from "react-router-dom"
 import { useState } from "react"
 import { useCartStore } from "../store/cartStore"

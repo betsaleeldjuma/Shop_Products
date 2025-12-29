@@ -1,6 +1,6 @@
 import { useQuery } from "@tanstack/react-query"
 import { useParams } from "react-router-dom"
-import apiShop from "../api/apiShop"
+import apiShop from "../store/apiShop"
 import EditProduct from "./EditProduct"
 import { useState } from "react"
 
