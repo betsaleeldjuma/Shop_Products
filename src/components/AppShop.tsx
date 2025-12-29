@@ -5,7 +5,8 @@ import { useState } from "react"
 import { useCartStore } from "../store/cartStore"
 import Sidebar from "./Sidebar"
 import { CgAdd } from "react-icons/cg"
-// import Search from "./Search"
+import Search from "./Search"
+import { motion } from "framer-motion"
 
 interface Product {
     id: number,
@@ -58,13 +59,16 @@ const AppShop = () => {
         <div className="w-[70%] p-5">
             <div className="flex justify-between items-center p-2">
                 <h1 className="text-3xl font-bold">Shop</h1>
-                <Link to='/products/new'><CgAdd size={25}/></Link>
+                <div className="flex flex-row gap-2">
+                    <p><Search /></p>
+                    <Link to='/products/new'><CgAdd size={25}/></Link>
+                </div>
             </div>
             <div className="flex flex-col gap-8">
                 <div>
                     <ul className="flex flex-col gap-8  rounded-lg">
                         {data.products.map((product) => (
-                            <li key={product.id} className="flex flex-col gap-2 bg-[#301B3F] rounded-lg shadow-lg p-3">
+                            <motion.li key={product.id} className="flex flex-col gap-2 bg-[#301B3F] rounded-lg shadow-lg p-3" initial={{x: 100, opacity: 0.7, scale: 0.7}} whileInView={{x: 0, scale: 1, opacity: 1}} whileHover={{scale: 1.1, opacity: 0.9}}>
                                 <div className="flex justify-evenly">
                                     <h1>{product.title}</h1>
                                     <p>{product.category}</p>
@@ -72,10 +76,10 @@ const AppShop = () => {
                                     <p>Price: ${product.price}</p>
                                 </div>
                                 <div className="flex justify-center items-center gap-4">
-                                    <button onClick={() => addToCart(product)} className="bg-[#3C415C] p-2 rounded-lg shadow-sm">Add</button>
+                                    <motion.button onClick={() => addToCart(product)} className="bg-[#3C415C] p-2 rounded-lg shadow-sm">Add</motion.button>
                                     <Link to={`/products/${product.id}`} className="underline text-blue-700 hover:text-[#B4A5A5]">View Description</Link>
                                 </div>
-                            </li>
+                            </motion.li>
                         ))}
                     </ul>
                 </div>
