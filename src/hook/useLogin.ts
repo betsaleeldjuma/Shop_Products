@@ -1,24 +1,23 @@
-import apiShop from "../store/apiShop"
 import { useMutation } from "@tanstack/react-query"
+import apiShop from "../store/apiShop"
 
 interface LoginPayload {
-    username: string
-    password: string
+  username: string
+  password: string
 }
 
-interface LoginResponse {
-    id: number
-    username: string
-    email: string
-    token: string
+
+const login = async (payload: LoginPayload) => {
+  const res = await apiShop.post("/auth/login", payload)
+  return res.data
 }
 
 export const useLogin = () => {
-    return useMutation<LoginResponse, Error, LoginPayload>({
-        mutationFn: ({username, password}) => apiShop.post<LoginResponse>("https://dummyjson.com/auth/login", {username, password}).then(res => res.data),
-        onSuccess: (data) => {
-            localStorage.setItem('token', data.token)
-            console.log('Login successful, token saved')
-        }
-    })
+  return useMutation({
+    mutationFn: login,
+    onSuccess: (data) => {
+      localStorage.setItem("token", data.token)
+      console.log("Token saved:", localStorage.getItem("token"))
+    }
+  })
 }
