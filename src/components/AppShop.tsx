@@ -45,7 +45,7 @@ const AppShop = () => {
     if(!data) return <div><h1>No Products Found</h1></div>
 
   return (
-    <div className="flex p-5">
+    <div className="flex p-5 text-[#B4A5A5]">
         <div className="w-[30%] p-5">
             {isOpen ? <div className="shadow-lg p-5">
                 <Sidebar />
