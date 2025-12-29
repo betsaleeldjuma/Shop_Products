@@ -49,10 +49,10 @@ const AppShop = () => {
         <div className="w-[30%] p-5">
             {isOpen ? <div className="shadow-lg p-5">
                 <Sidebar />
-                <button onClick={() => setIsOpen(!isOpen)} className="w-[80%] bg-red-500 rounded-lg">Close</button>
+                <button onClick={() => setIsOpen(!isOpen)} className="w-[80%] bg-red-500 rounded-lg text-white">Close</button>
             </div> : <div className="flex flex-col justify-center gap-2">
                     <h1 className="text-3xl font-bold">Basket</h1>
-                    <button onClick={() => setIsOpen(!isOpen)} className="w-[80%] bg-green-500 rounded-lg">Open</button>
+                    <button onClick={() => setIsOpen(!isOpen)} className="w-[80%] bg-[#3C415C] rounded-lg">Open</button>
                 </div>}
         </div>
         <div className="w-[70%] p-5">
@@ -60,11 +60,11 @@ const AppShop = () => {
                 <h1 className="text-3xl font-bold">Shop</h1>
                 <Link to='/products/new'><CgAdd size={25}/></Link>
             </div>
-            <div className="flex flex-col gap-4">
+            <div className="flex flex-col gap-8">
                 <div>
-                    <ul className="flex flex-col gap-8">
+                    <ul className="flex flex-col gap-8  rounded-lg">
                         {data.products.map((product) => (
-                            <li key={product.id} className="flex flex-col gap-2 shadow-lg p-3">
+                            <li key={product.id} className="flex flex-col gap-2 bg-[#301B3F] rounded-lg shadow-lg p-3">
                                 <div className="flex justify-evenly">
                                     <h1>{product.title}</h1>
                                     <p>{product.category}</p>
@@ -72,7 +72,7 @@ const AppShop = () => {
                                     <p>Price: ${product.price}</p>
                                 </div>
                                 <div className="flex justify-center items-center gap-4">
-                                    <button onClick={() => addToCart(product)} className="bg-yellow-500 p-2 rounded-lg shadow-sm">Add</button>
+                                    <button onClick={() => addToCart(product)} className="bg-[#3C415C] p-2 rounded-lg shadow-sm">Add</button>
                                     <Link to={`/products/${product.id}`} className="underline text-blue-700 hover:text-black">View Description</Link>
                                 </div>
                             </li>
