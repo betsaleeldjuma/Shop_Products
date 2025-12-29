@@ -73,7 +73,7 @@ const AppShop = () => {
                                 </div>
                                 <div className="flex justify-center items-center gap-4">
                                     <button onClick={() => addToCart(product)} className="bg-[#3C415C] p-2 rounded-lg shadow-sm">Add</button>
-                                    <Link to={`/products/${product.id}`} className="underline text-blue-700 hover:text-black">View Description</Link>
+                                    <Link to={`/products/${product.id}`} className="underline text-blue-700 hover:text-[#B4A5A5]">View Description</Link>
                                 </div>
                             </li>
                         ))}
@@ -82,8 +82,8 @@ const AppShop = () => {
                 <div>
                     {isFetching && <p>Chargement...</p>}
                     <div className="flex gap-4">
-                        <button onClick={() => setPage((p) => Math.max(p - 1, 0))} disabled={page === 0} className="bg-black text-white p-2 rounded-lg">Prev</button>
-                        <button onClick={() => setPage((p) => p + 1)} disabled={!data?.products?.length} className="bg-black text-white p-2 rounded-lg">Next</button>
+                        <button onClick={() => setPage((p) => Math.max(p - 1, 0))} disabled={page === 0} className="bg-[#3C415C] text-white p-2 rounded-lg">Prev</button>
+                        <button onClick={() => setPage((p) => p + 1)} disabled={!data?.products?.length} className="bg-[#3C415C] text-white p-2 rounded-lg">Next</button>
                     </div>
                 </div>
             </div>
