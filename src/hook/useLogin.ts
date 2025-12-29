@@ -16,8 +16,8 @@ export const useLogin = () => {
   return useMutation({
     mutationFn: login,
     onSuccess: (data) => {
-      localStorage.setItem("token", data.token)
-      console.log("Token saved:", localStorage.getItem("token"))
+      localStorage.setItem('token', data.accessToken)
+      console.log('Token saved:', localStorage.getItem('token'))
     }
   })
 }
