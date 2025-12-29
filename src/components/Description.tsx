@@ -25,7 +25,7 @@ const Description = () => {
     const productId = id ? Number(id) : undefined
     const {data, isError, isLoading} = useQuery<Product>({queryKey: ['products', id], queryFn: () => fetchProduct(productId!), enabled: !!id})
 
-    if(isLoading) return <div><h1>Loading...</h1></div>
+    if(isLoading) return <div className="flex justify-center items-center bg-[#301B3F] rounded-full"><h1>Loading...</h1></div>
     if(isError) return <div><p>An Error Occured</p></div>
     if(!data) return <div><h1>No Products Found</h1></div>
 

@@ -40,7 +40,7 @@ const AppShop = () => {
     const {data , error, isLoading, isFetching} = useQuery({queryKey: ['products', {limit: LIMIT, skip}], queryFn: fetchUser, placeholderData: (previousData) => previousData})
     const addToCart = useCartStore((state) => state.addToCart)
 
-    if(isLoading) return <div><h1>Loading...</h1></div>
+    if(isLoading) return <div className="flex justify-center items-center bg-[#301B3F] rounded-full"><h1>Loading...</h1></div>
     if(error) return <div><p>An Error Occured</p></div>
     if(!data) return <div><h1>No Products Found</h1></div>
 
