@@ -7,6 +7,7 @@ import Sidebar from "./Sidebar"
 import { CgAdd } from "react-icons/cg"
 import Search from "./Search"
 import { motion } from "framer-motion"
+import { FaSearch } from "react-icons/fa"
 
 interface Product {
     id: number,
@@ -37,6 +38,7 @@ const AppShop = () => {
     const LIMIT = 10
     const [page, setPage] = useState(0)
     const [isOpen, setIsOpen] = useState(false)
+    const [search, setSearch] = useState(false)
     const skip = page * LIMIT
     const {data , error, isLoading, isFetching} = useQuery({queryKey: ['products', {limit: LIMIT, skip}], queryFn: fetchUser, placeholderData: (previousData) => previousData})
     const addToCart = useCartStore((state) => state.addToCart)
@@ -60,7 +62,12 @@ const AppShop = () => {
             <div className="flex justify-between items-center p-2">
                 <h1 className="text-3xl font-bold">Shop</h1>
                 <div className="flex flex-row gap-2">
-                    <p><Search /></p>
+                    {search ? 
+                    <div>
+                        <Search />
+                        <button onClick={() => setSearch(!search)}><FaSearch /></button>
+                    </div> 
+                    : <button onClick={() => setSearch(!search)}><FaSearch /></button>}
                     <Link to='/products/new'><CgAdd size={25}/></Link>
                 </div>
             </div>
