@@ -78,7 +78,7 @@ const AppShop = () => {
                         </div>}
                     {search ? 
                     <div>
-                        <div className="absolute right-5 top-12 bg-[#3C415C] p-3 rounded-lg shadow-lg">
+                        <div className="absolute right-1 top-12 bg-[#3C415C] p-3 rounded-lg shadow-lg">
                             <Search />
                         </div>
                         <button onClick={() => setSearch(!search)}><FaSearch size={25}/></button>

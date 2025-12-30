@@ -30,7 +30,7 @@ const AddProductForm = () => {
         <input value={title} onChange={e => setTitle(e.target.value)} placeholder="Product title" className="border rounded-lg p-1"/>
         <label className="text-xl font-bold">Product Price</label>
         <input type="number" value={price} onChange={e => setPrice(Number(e.target.value))} placeholder="Price" className="border rounded-lg p-1"/>
-        <button type="submit" className="bg-green-500 w-[30%] rounded-lg shadow-sm text-white p-2">Create product</button>
+        <button type="submit" className="bg-green-500 w-[30%] rounded-lg shadow-sm text-white p-2">Create</button>
       </div>
     </form>
   )
