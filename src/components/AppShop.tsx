@@ -66,11 +66,16 @@ const AppShop = () => {
             <div className="flex justify-between items-center p-2">
                 <h1 className="text-3xl font-bold">Shop</h1>
                 <div className="flex flex-row gap-2">
-                    {basket ? <div>
-
+                    {basket ? <div className="fixed inset-0 z-50">
+                        <div className="absolute inset-0 bg-black/50 z-5 backdrop-blur-sm">
+                            <div className="flex flex-col justify-center items-center gap-4 h-full">
+                                <Sidebar />
+                                <button onClick={() => setBasket(!basket)} className="w-[80%] bg-red-500 rounded-lg text-white">Close</button>
+                            </div>
+                        </div>
                     </div> : <div>
-                        
-                        </div>}<IoBagHandle size={25}/>
+                            <button onClick={() => setBasket(!basket)}><IoBagHandle size={25}/></button>
+                        </div>}
                     {search ? 
                     <div>
                         <div className="absolute right-5 top-12 bg-[#3C415C] p-3 rounded-lg shadow-lg">
