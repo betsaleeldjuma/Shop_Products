@@ -92,7 +92,7 @@ const AppShop = () => {
                 <div>
                     <ul className="flex flex-col gap-8  rounded-lg">
                         {data.products.map((product) => (
-                            <motion.li key={product.id} className="flex flex-col gap-2 bg-[#301B3F] w-[100%] rounded-lg shadow-lg p-3" initial={{y: 100, opacity: 0.7, scale: 0.7}} whileInView={{y: 0, scale: 1, opacity: 1}} whileHover={{scale: 1.1, opacity: 0.9}}>
+                            <motion.li key={product.id} className="flex flex-col gap-2 bg-[#301B3F] w-[100%] rounded-lg shadow-lg p-3" initial={{y: 100, opacity: 0.7, scale: 0.7}} whileInView={{y: 0, scale: 1, opacity: 1}} whileHover={{scale: 1.05, opacity: 0.9}}>
                                 <div className="flex flex-col gap-2 lg:flex-row lg:justify-evenly">
                                     <h1>{product.title}</h1>
                                     <p>{product.category}</p>
