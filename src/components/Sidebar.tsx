@@ -5,7 +5,7 @@ const Sidebar = () => {
     const total = items.reduce((acc, item) => acc + item.price, 0)
 
   return (
-    <aside>
+    <aside className="flex flex-col justify-center items-center gap-2">
         <h2 className="text-3xl font-bold">Basket</h2>
         {items.length === 0 && <p>Empty</p>}
         <ul>

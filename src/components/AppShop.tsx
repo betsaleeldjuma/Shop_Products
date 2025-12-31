@@ -9,6 +9,8 @@ import Search from "./Search"
 import { motion } from "framer-motion"
 import { FaSearch } from "react-icons/fa"
 import { IoBagHandle } from "react-icons/io5"
+import FavoriteButton from "./FavoriteButton"
+import Favoris from "./Favoris"
 
 interface Product {
     id: number,
@@ -53,11 +55,13 @@ const AppShop = () => {
     <div className="flex justify-center w-screen lg:p-5 text-[#B4A5A5]">
         {/* SIDEBAR */}
         <div className="w-[30%] p-5 hidden lg:block">
-            {isOpen ? <div className="shadow-lg p-5">
+            {isOpen ? <div className="shadow-lg p-5 flex flex-col items-center">
                 <Sidebar />
+                <hr />
+                <Favoris />
                 <button onClick={() => setIsOpen(!isOpen)} className="w-[80%] bg-red-500 rounded-lg text-white">Close</button>
             </div> : <div className="flex flex-col justify-center gap-2">
-                    <h1 className="text-3xl font-bold">Basket</h1>
+                    <h1 className="text-3xl font-bold">Basket + Favoris</h1>
                     <button onClick={() => setIsOpen(!isOpen)} className="w-[80%] bg-[#3C415C] rounded-lg">Open</button>
                 </div>}
         </div>
@@ -72,6 +76,8 @@ const AppShop = () => {
                             <div className="absolute inset-0 bg-black/50 z-5 backdrop-blur-sm">
                                 <div className="flex flex-col justify-center items-center gap-4 h-full">
                                     <Sidebar />
+                                    <hr />
+                                    <Favoris />
                                     <button onClick={() => setBasket(!basket)} className="w-[80%] bg-red-500 rounded-lg text-white">Close</button>
                                 </div>
                             </div>
@@ -79,6 +85,7 @@ const AppShop = () => {
                                 <button onClick={() => setBasket(!basket)}><IoBagHandle size={25}/></button>
                             </div>}
                     </div>
+                    {/* SEARCH */}
                     {search ? 
                     <div className="lg:flex lg:gap-2 items-center">
                         <div className="absolute lg:static right-1 top-12 bg-[#3C415C] p-3 rounded-lg shadow-lg">
@@ -92,6 +99,7 @@ const AppShop = () => {
             </div>
             {/* BODY */}
             <div className="flex flex-col gap-8">
+                {/* LIST */}
                 <div>
                     <ul className="flex flex-col gap-8  rounded-lg">
                         {data.products.map((product) => (
@@ -101,6 +109,9 @@ const AppShop = () => {
                                     <p>{product.category}</p>
                                     <p>Rating: {product.rating}</p>
                                     <p>Price: ${product.price}</p>
+                                    <div>
+                                        <FavoriteButton productId={product.id} />
+                                    </div>
                                 </div>
                                 <div className="flex justify-center items-center gap-4">
                                     <motion.button onClick={() => addToCart(product)} className="bg-[#3C415C] p-2 rounded-lg shadow-sm">Add</motion.button>
@@ -110,6 +121,7 @@ const AppShop = () => {
                         ))}
                     </ul>
                 </div>
+                {/* BUTTON */}
                 <div>
                     {isFetching && <p>Chargement...</p>}
                     <div className="flex gap-4">
