@@ -32,7 +32,7 @@ const Favoris = () => {
       <h2 className="text-2xl font-extrabold">Favoris</h2>
 
       {favoriteProducts.length === 0 ? (
-        <p className="text-sm text-gray-500">      
+        <p className="text-[#B4A5A5] font-bold">      
             No favorites
         </p>
       ) : (
